@@ -1,13 +1,14 @@
 #include<stdio.h>
-
+#include<math.h>
 double rms(double a[], int n)
 {
-	double r, sum=0.0;
+	double r, b, sum=0.0;
 	for(int i=0; i<n; i++){
 		sum=sum+(a[i]*a[i]);
 	} 
 
-	r=sum/n;
+	b=sqrt(sum);
+	r=b/n;
 	return r;
 }
 
