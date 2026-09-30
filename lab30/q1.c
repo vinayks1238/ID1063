@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+#define MAX 20
+
+int productEntry(int A[][MAX], int B[][MAX],
+                 int row, int col, int common)
+{
+    int sum = 0;
+
+    for (int k = 0; k < common; k++)
+        sum += A[row][k] * B[k][col];
+
+    return sum;
+}
+
+int main()
+{
+    int A[MAX][MAX], B[MAX][MAX];
+    int r1, c1, r2, c2;
+
+    scanf("%d %d", &r1, &c1);
+
+    for (int i = 0; i < r1; i++)
+        for (int j = 0; j < c1; j++)
+            scanf("%d", &A[i][j]);
+
+    scanf("%d %d", &r2, &c2);
+
+    for (int i = 0; i < r2; i++)
+        for (int j = 0; j < c2; j++)
+            scanf("%d", &B[i][j]);
+
+    for (int i = 0; i < r1; i++)
+    {
+        for (int j = 0; j < c2; j++)
+        {
+            printf("%d", productEntry(A, B, i, j, c1));
+
+            if (j < c2 - 1)
+                printf(" ");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
